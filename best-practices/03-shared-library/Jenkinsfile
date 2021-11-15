@@ -7,7 +7,7 @@ pipeline {
             log.info 'Starting'
             agent any
             steps {
-                build.mvn 'clean package'
+                build('clean package')
             }
         }
         stage('Test') {
