@@ -4,7 +4,9 @@ pipeline {
     agent none
     stages {
         stage('Build') {
-            log.info 'Starting'
+            script {
+                log.info 'Starting'
+            }
             agent any
             steps {
                 build('clean package')
@@ -18,7 +20,9 @@ pipeline {
             }
             post {
                 always {
-                    log.info 'Finishing'
+                    script {
+                        log.info 'Finishing'
+                    }
                 }
             }
         }
