@@ -1,0 +1,26 @@
+@Library('my-shared-library') _
+
+pipeline {
+    agent none
+    stages {
+        stage('Build') {
+            log.info 'Starting'
+            agent any
+            steps {
+                build.mvn 'clean package'
+            }
+        }
+        stage('Test') {
+            agent any
+            steps {
+                echo("unstash 'app'")
+                echo("sh 'make check'")
+            }
+            post {
+                always {
+                    log.info 'Finishing'
+                }
+            }
+        }
+    }
+}
