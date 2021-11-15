@@ -4,12 +4,14 @@ pipeline {
     agent none
     stages {
         stage('Build') {
-            script {
-                log.info 'Starting'
-            }
-            agent any
             steps {
-                build('clean package')
+                script {
+                    log.info 'Starting'
+                }
+                agent any
+                steps {
+                    build('clean package')
+                }
             }
         }
         stage('Test') {
