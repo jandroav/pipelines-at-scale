@@ -9,7 +9,7 @@ pipeline {
                 script {
                     log.info 'Starting'
                 }
-                build('clean package')
+                buildStep('clean package')
             }
         }
         stage('Test') {
