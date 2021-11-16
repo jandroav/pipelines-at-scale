@@ -1,0 +1,11 @@
+name: Multibranch with marker file
+type: pipeline-template
+templateType: MULTIBRANCH
+parameters:
+  - name: repoUrl
+    type: string
+    displayName: Repository
+multibranch:
+  branchSource:
+    git:
+      remote: ${repoUrl}
