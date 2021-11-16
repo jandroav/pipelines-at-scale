@@ -1,0 +1,5 @@
+version: 1
+type: pipeline-template-catalog
+
+name: pipelinesAsScaleCourse
+displayName: Shared Template Catalog for Pipelines as Scale course
