@@ -1,0 +1,29 @@
+pipeline {
+    agent none
+    stages {
+        stage('Example Build') {
+            agent {
+              label "linux"
+            }
+            steps {
+                sh 'echo Hello World'
+            }
+        }
+        stage('Ready to Deploy') {
+            options {
+                timeout(time: 1, unit: 'MINUTES') 
+            }
+            steps {
+                input(message: "Deploy to production?")
+            }
+        }
+        stage('Example Deploy') {
+            agent {
+              label "linux"
+            }
+            steps {
+                sh 'echo Deploying'
+            }
+        }
+    }
+}
