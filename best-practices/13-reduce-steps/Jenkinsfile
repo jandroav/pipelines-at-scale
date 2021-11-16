@@ -1,0 +1,17 @@
+pipeline {
+    agent none
+    stages {
+        stage('Build') {
+            agent any
+            steps {
+                checkout scm
+                // Reduce repetition of similar steps
+                sh 'mvn clean'
+                sh 'mvn package'
+                sh 'rm -rf .m2/repository'
+                // The following is better
+                sh 'mvn clean package && rm -rf .m2/repository'
+            }
+        }
+    }
+}
